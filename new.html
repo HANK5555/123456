@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>卡牌網頁遊戲</title>
+  <style>
+    /* CSS 樣式 */
+    /* 在這裡自定義你的遊戲樣式 */
+  </style>
+</head>
+<body>
+  <h1>卡牌網頁遊戲</h1>
+  <div id="playerDeck">
+    <h2>玩家</h2>
+    <!-- 顯示玩家的卡牌 -->
+  </div>
+  <div id="computerDeck">
+    <h2>電腦</h2>
+    <!-- 顯示電腦的卡牌 -->
+  </div>
+  <button onclick="playerTurn()">玩家回合</button>
+  <p id="result"></p>
+
+  <script>
+    // JavaScript 代碼
+    // 定義玩家和電腦的卡牌
+    var playerDeck = [
+      { name: '卡牌1', attack: 10, defense: 5 },
+      { name: '卡牌2', attack: 8, defense: 7 },
+      // 添加更多卡牌
+    ];
+
+    var computerDeck = [
+      { name: '卡牌1', attack: 9, defense: 6 },
+      { name: '卡牌2', attack: 7, defense: 8 },
+      // 添加更多卡牌
+    ];
+
+    var playerHealth = 20; // 玩家的生命值
+    var computerHealth = 20; // 電腦的生命值
+
+    function playerTurn() {
+      // 玩家出牌的處理
+      // 選擇一張卡牌並攻擊對手的卡牌
+      // 更新遊戲狀態和顯示結果
+
+      // 如果遊戲還沒結束，換電腦回合
+      if (playerHealth > 0 && computerHealth > 0) {
+        computerTurn();
+      } else {
+        // 遊戲結束，顯示勝利者
+        if (playerHealth <= 0) {
+          document.getElementById('result').innerHTML = '電腦獲勝！';
+        } else {
+          document.getElementById('result').innerHTML = '玩家獲勝！';
+        }
+      }
+    }
+
+    function computerTurn() {
+      // 電腦出牌的處理
+      // 選擇一張卡牌並攻擊玩家的卡牌
+      // 更新遊戲狀態和顯示結果
+
+      // 如果遊戲還沒結束，換玩家回合
+      if (playerHealth > 0 && computerHealth > 0) {
+        playerTurn();
+      } else {
+        // 遊戲結束，顯示勝利者
+        if (playerHealth <= 0) {
+          document.getElementById('result').innerHTML = '電腦獲勝！';
+        } else {
+          document.getElementById('result').innerHTML = '玩家獲勝！';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
